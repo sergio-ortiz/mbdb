@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma";
-import Link from "next/link";
+import Paginator from "../components/paginator";
 
 export async function getServerSideProps({ params }) {
   const page = params.page ? params.page.shift() : 1;
@@ -18,14 +18,7 @@ export async function getServerSideProps({ params }) {
 
 const HomePage = ({ page, json }) => (
   <>
-    <Link href={`/${parseInt(page) - 1}`}>
-      <a>prev</a>
-    </Link>
-    <br />
-    <Link href={`/${parseInt(page) + 1}`}>
-      <a>next</a>
-    </Link>
-
+    <Paginator page={page} />
     <table>
       <thead>
         <tr>
