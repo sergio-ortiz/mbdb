@@ -11,6 +11,6 @@ table {
 }
 
 table * {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #999;
   text-align: center;
 }
