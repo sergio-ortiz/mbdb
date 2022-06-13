@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Business {
+  name        String? @db.VarChar(75)
+  address     String? @db.VarChar(100)
+  city        String? @db.VarChar(50)
+  state       String? @db.VarChar(2)
+  zip         String? @db.VarChar(11)
+  county      String? @db.VarChar(50)
+  minority    String? @db.VarChar(50)
+  contact     String? @db.VarChar(50)
+  phone       String? @db.VarChar(11)
+  email       String? @db.VarChar(50)
+  website     String? @db.VarChar(50)
+  naics_codes String? @db.VarChar(Max)
+  id          Int     @id(map: "PK__Business__3213E83F392B56FA") @default(autoincrement())
+}
