@@ -19,38 +19,26 @@ export async function getServerSideProps({ params }) {
 const HomePage = ({ page, json }) => (
   <>
     <Paginator page={page} />
-    <table>
+    <table className="container">
       <thead>
         <tr>
           <th>name</th>
           <th>address</th>
           <th>city</th>
-          <th>state</th>
           <th>zip</th>
           <th>county</th>
           <th>minority</th>
-          <th>contact</th>
-          <th>phone</th>
-          <th>email</th>
-          <th>website</th>
-          <th>naics_codes</th>
         </tr>
       </thead>
       <tbody>
         {JSON.parse(json).map((biz) => (
-          <tr>
+          <tr key={biz.id}>
             <td>{biz.name}</td>
             <td>{biz.address}</td>
             <td>{biz.city}</td>
-            <td>{biz.state}</td>
             <td>{biz.zip}</td>
             <td>{biz.county}</td>
             <td>{biz.minority}</td>
-            <td>{biz.contact}</td>
-            <td>{biz.phone}</td>
-            <td>{biz.email}</td>
-            <td>{biz.website}</td>
-            <td>{biz.naics_codes}</td>
           </tr>
         ))}
       </tbody>
