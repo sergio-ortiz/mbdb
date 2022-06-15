@@ -1,5 +1,6 @@
 import prisma from "../lib/prisma";
 import Paginator from "../components/paginator";
+import Table from "../components/table";
 
 export async function getServerSideProps({ params }) {
   const page = params.page ? params.page.shift() : 1;
@@ -19,30 +20,7 @@ export async function getServerSideProps({ params }) {
 const HomePage = ({ page, json }) => (
   <>
     <Paginator page={page} />
-    <table className="container">
-      <thead>
-        <tr>
-          <th>name</th>
-          <th>address</th>
-          <th>city</th>
-          <th>zip</th>
-          <th>county</th>
-          <th>minority</th>
-        </tr>
-      </thead>
-      <tbody>
-        {JSON.parse(json).map((biz) => (
-          <tr key={biz.id}>
-            <td>{biz.name}</td>
-            <td>{biz.address}</td>
-            <td>{biz.city}</td>
-            <td>{biz.zip}</td>
-            <td>{biz.county}</td>
-            <td>{biz.minority}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <Table json={json} />
   </>
 );
 
