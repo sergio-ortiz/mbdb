@@ -1,0 +1,9 @@
+.btnGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  color: black;
+  margin: 1rem;
+}
