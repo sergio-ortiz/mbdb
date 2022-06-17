@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma";
-import Paginator from "../components/paginator";
+import Layout from "../components/layout";
 import Table from "../components/table";
 
 export async function getServerSideProps({ params }) {
@@ -18,10 +18,9 @@ export async function getServerSideProps({ params }) {
 }
 
 const HomePage = ({ page, json }) => (
-  <>
-    <Paginator page={page} />
+  <Layout page={page}>
     <Table json={json} />
-  </>
+  </Layout>
 );
 
 export default HomePage;

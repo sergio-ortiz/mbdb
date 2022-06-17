@@ -4,7 +4,7 @@ const Table = ({ json }) => {
   const router = useRouter();
 
   return (
-    <table className="container">
+    <table>
       <thead>
         <tr>
           <th>name</th>

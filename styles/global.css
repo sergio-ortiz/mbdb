@@ -10,6 +10,10 @@ a {
   color: black;
 }
 
+table {
+  width: 100%;
+}
+
 thead tr,
 tbody tr {
   display: flex;
