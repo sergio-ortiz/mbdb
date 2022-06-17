@@ -15,10 +15,11 @@ export async function getServerSideProps({ query }) {
 
 const BusinessPage = ({ json }) => (
   <div className="container">
+    <h1>Business Profile</h1>
     {Object.entries(JSON.parse(json)).map(([k, v]) => (
-      <h3 key={k}>
-        {k}: {v}
-      </h3>
+      <p key={k}>
+        <b>{k}</b>: {v}
+      </p>
     ))}
   </div>
 );
