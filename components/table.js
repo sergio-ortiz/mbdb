@@ -8,7 +8,6 @@ const Table = ({ json }) => {
       <thead>
         <tr>
           <th>name</th>
-          <th>address</th>
           <th>city</th>
           <th>zip</th>
           <th>county</th>
@@ -19,7 +18,6 @@ const Table = ({ json }) => {
         {JSON.parse(json).map((biz) => (
           <tr key={biz.id} onClick={() => router.push(`/business/${biz.id}`)}>
             <td>{biz.name}</td>
-            <td>{biz.address}</td>
             <td>{biz.city}</td>
             <td>{biz.zip}</td>
             <td>{biz.county}</td>
