@@ -13,6 +13,14 @@ export async function getServerSideProps({ query }) {
   return { props: { json } };
 }
 
-const BusinessPage = ({ json }) => <>{json}</>;
+const BusinessPage = ({ json }) => (
+  <div className="container">
+    {Object.entries(JSON.parse(json)).map(([k, v]) => (
+      <h3 key={k}>
+        {k}: {v}
+      </h3>
+    ))}
+  </div>
+);
 
 export default BusinessPage;
