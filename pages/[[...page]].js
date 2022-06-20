@@ -5,10 +5,12 @@ import Table from "../components/table";
 export async function getServerSideProps({ params }) {
   let page = 1;
   let search = null;
+  let filter = {};
 
   if (params.page) {
     if (params.page.length > 1) {
       search = params.page.pop();
+      filter = { name: { startsWith: search } };
     }
     page = params.page.shift();
   }
@@ -16,6 +18,7 @@ export async function getServerSideProps({ params }) {
   const results = await prisma.business.findMany({
     skip: page * 10 - 10,
     take: 10,
+    where: filter,
   });
 
   const json = JSON.stringify(results);
