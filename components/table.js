@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 const Table = ({ json }) => {
   const router = useRouter();
-
   return (
     <table>
       <thead>

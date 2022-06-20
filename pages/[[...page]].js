@@ -3,7 +3,15 @@ import Layout from "../components/layout";
 import Table from "../components/table";
 
 export async function getServerSideProps({ params }) {
-  const page = params.page ? params.page.shift() : 1;
+  let page = 1;
+  let search = null;
+
+  if (params.page) {
+    if (params.page.length > 1) {
+      search = params.page.pop();
+    }
+    page = params.page.shift();
+  }
 
   const results = await prisma.business.findMany({
     skip: page * 10 - 10,
@@ -12,13 +20,13 @@ export async function getServerSideProps({ params }) {
 
   const json = JSON.stringify(results);
 
-  const props = { page, json };
+  const props = { page, search, json };
 
   return { props };
 }
 
-const HomePage = ({ page, json }) => (
-  <Layout page={page}>
+const HomePage = ({ page, search, json }) => (
+  <Layout page={page} search={search}>
     <Table json={json} />
   </Layout>
 );
