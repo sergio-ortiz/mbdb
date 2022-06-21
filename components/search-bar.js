@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import styles from "/styles/search-bar.module.css";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -8,9 +9,14 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Search </label>
-      <input name="search" type="text" />
+    <form onSubmit={handleSubmit} className={styles.bar}>
+      <input
+        className={styles.input}
+        name="search"
+        type="text"
+        placeholder="Search"
+      />
+      &#x1F50E;
     </form>
   );
 };
