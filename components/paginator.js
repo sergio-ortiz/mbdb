@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { btnGroup, btn } from "../styles/paginator.module.css";
 
-const Paginator = ({ page, search }) => (
+const Paginator = ({ page, search, pageLength }) => (
   <div className={btnGroup}>
     {page > 1 ? (
       <Link href={`/${parseInt(page) - 1}/${search ? search : ""}`}>
@@ -9,9 +9,11 @@ const Paginator = ({ page, search }) => (
       </Link>
     ) : null}
     <br />
-    <Link href={`/${parseInt(page) + 1}/${search ? search : ""}`}>
-      <a className={btn}>Next &gt;&gt;</a>
-    </Link>
+    {pageLength == 10 ? (
+      <Link href={`/${parseInt(page) + 1}/${search ? search : ""}`}>
+        <a className={btn}>Next &gt;&gt;</a>
+      </Link>
+    ) : null}
   </div>
 );
 

@@ -23,13 +23,15 @@ export async function getServerSideProps({ params }) {
 
   const json = JSON.stringify(results);
 
-  const props = { page, search, json };
+  const pageLength = results.length;
+
+  const props = { page, search, json, pageLength };
 
   return { props };
 }
 
-const HomePage = ({ page, search, json }) => (
-  <Layout page={page} search={search}>
+const HomePage = ({ page, search, json, pageLength }) => (
+  <Layout page={page} search={search} pageLength={pageLength}>
     <Table json={json} />
   </Layout>
 );
