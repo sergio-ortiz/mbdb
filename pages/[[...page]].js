@@ -10,7 +10,7 @@ export async function getServerSideProps({ params }) {
   if (params.page) {
     if (params.page.length > 1) {
       search = params.page.pop();
-      filter = { name: { startsWith: search } };
+      filter = { name: { startsWith: search.slice(0, 4) } };
     }
     page = params.page.shift();
   }
