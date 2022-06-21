@@ -5,7 +5,7 @@ const SearchBar = () => {
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`/1/${e.target.search.value}`);
+    router.push(`/1?name=${e.target.search.value}`);
   };
 
   return (

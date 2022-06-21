@@ -2,14 +2,15 @@ import prisma from "../lib/prisma";
 import Layout from "../components/layout";
 import Table from "../components/table";
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, query }) {
   let page = 1;
   let search = null;
   let filter = {};
+  console.log(query);
 
   if (params.page) {
-    if (params.page.length > 1) {
-      search = params.page.pop();
+    if (query.name) {
+      search = query.name;
       filter = { name: { startsWith: search.slice(0, 4) } };
     }
     page = params.page.shift();
