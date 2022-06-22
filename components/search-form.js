@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import styles from "/styles/search-bar.module.css";
+import styles from "/styles/search-form.module.css";
 
 const SearchBar = () => {
   const router = useRouter();
