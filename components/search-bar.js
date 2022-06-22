@@ -10,8 +10,19 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Search: </label>
-      <input className={styles.input} name="search" type="text" />
+      <input
+        className={styles.input}
+        name="search"
+        type="text"
+        placeholder="search"
+      />
+      <select className={styles.select} name="modifier">
+        <option value="name">name</option>
+        <option value="city">city</option>
+        <option value="zip">zip</option>
+        <option value="county">county</option>
+        <option value="minority">minority</option>
+      </select>
     </form>
   );
 };
