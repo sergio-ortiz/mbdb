@@ -2,18 +2,21 @@ import prisma from "../lib/prisma";
 import Layout from "../components/layout";
 import Table from "../components/table";
 
-export async function getServerSideProps({ params, query }) {
+export async function getServerSideProps({ query }) {
   let page = 1;
   let search = null;
+  let mod = null;
   let filter = {};
-  console.log(query);
 
-  if (params.page) {
-    if (query.name) {
-      search = query.name;
-      filter = { name: { startsWith: search.slice(0, 4) } };
+  for (const key of Object.keys(query)) {
+    console.log(`query.${key} = ${query[key]}`);
+    if (key == "page") {
+      page = query.page[0];
+    } else {
+      search = query[key];
+      mod = key;
+      filter[key] = { startsWith: search };
     }
-    page = params.page.shift();
   }
 
   const results = await prisma.business.findMany({
@@ -26,13 +29,11 @@ export async function getServerSideProps({ params, query }) {
 
   const pageLength = results.length;
 
-  const props = { page, search, json, pageLength };
-
-  return { props };
+  return { props: { page, search, mod, json, pageLength } };
 }
 
-const HomePage = ({ page, search, json, pageLength }) => (
-  <Layout page={page} search={search} pageLength={pageLength}>
+const HomePage = ({ page, search, mod, json, pageLength }) => (
+  <Layout page={page} search={search} mod={mod} pageLength={pageLength}>
     <Table json={json} />
   </Layout>
 );
