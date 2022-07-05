@@ -1,4 +1,5 @@
-import prisma from "../../lib/prisma";
+import Link from "next/link";
+import prisma from "../../../lib/prisma";
 
 export async function getServerSideProps({ query }) {
   const { id } = query;
@@ -10,15 +11,19 @@ export async function getServerSideProps({ query }) {
 
   const json = JSON.stringify(results);
 
-  return { props: { json } };
+  return { props: { id, json } };
 }
 
-const BusinessPage = ({ json }) => (
+const BusinessPage = ({ id, json }) => (
   <div className="container">
-    <h1>Business Profile</h1>
+    <h1>Business {id} Profile</h1>
     {Object.entries(JSON.parse(json)).map(([k, v]) => (
-      <p key={k}>
-        <b>{k}</b>: {v}
+      <p>
+        <Link href={`/business/${id}/${k}`}>
+          <a key={k}>
+            <b>{k}</b>: {v}
+          </a>
+        </Link>
       </p>
     ))}
   </div>

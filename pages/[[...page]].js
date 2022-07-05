@@ -9,7 +9,6 @@ export async function getServerSideProps({ query }) {
   let filter = {};
 
   for (const key of Object.keys(query)) {
-    console.log(`query.${key} = ${query[key]}`);
     if (key == "page") {
       page = query.page[0];
     } else {
