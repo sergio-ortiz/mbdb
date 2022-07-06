@@ -18,9 +18,9 @@ const BusinessPage = ({ id, json }) => (
   <div className="container">
     <h1>Business {id} Profile</h1>
     {Object.entries(JSON.parse(json)).map(([k, v]) => (
-      <p>
+      <p key={k}>
         <Link href={`/business/${id}/${k}`}>
-          <a key={k}>
+          <a>
             <b>{k}</b>: {v}
           </a>
         </Link>
