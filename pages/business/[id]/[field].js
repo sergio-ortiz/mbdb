@@ -1,5 +1,15 @@
 export async function getServerSideProps({ query }) {
-  return { props: { query: query.field } };
+  const select = new Object();
+  select[query.field] = true;
+
+  const value = await prisma.business.findUnique({
+    where: {
+      id: parseInt(query.id),
+    },
+    select,
+  });
+
+  return { props: { value: value[query.field] } };
 }
 
-export default ({ query }) => <>{query}</>;
+export default ({ value }) => <>{value}</>;
