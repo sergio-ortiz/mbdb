@@ -11,6 +11,7 @@ const Table = ({ json }) => {
           <th>zip</th>
           <th>county</th>
           <th>minority</th>
+          <th>naics codes</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,12 @@ const Table = ({ json }) => {
             <td>{biz.zip}</td>
             <td>{biz.county}</td>
             <td>{biz.minority}</td>
+            <td>
+              {biz.naics_codes
+                .split(",")
+                .map((e) => e.match(/\d+/))
+                .join(", ")}
+            </td>
           </tr>
         ))}
       </tbody>
