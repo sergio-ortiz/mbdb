@@ -22,6 +22,7 @@ const SearchBar = () => {
         <option value="zip">zip</option>
         <option value="county">county</option>
         <option value="minority">minority</option>
+        <option value="naics_codes">naics codes</option>
       </select>
     </form>
   );

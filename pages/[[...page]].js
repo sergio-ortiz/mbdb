@@ -14,7 +14,8 @@ export async function getServerSideProps({ query }) {
     } else {
       search = query[key];
       mod = key;
-      filter[key] = { startsWith: search };
+      filter[key] =
+        key == "naics_codes" ? { contains: search } : { startsWith: search };
     }
   }
 
